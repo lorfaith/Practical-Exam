@@ -1,0 +1,63 @@
+---
+title: "Practical Exam in CS101"
+author: "Lore Faith Sabio BSIT-2B"
+date: "2023-11-15"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+1. Load the mtcars.csv dataset into the R environment. Show your answer.
+```{r 1}
+data(mtcars)
+head(mtcars)
+```
+
+2. How many observations does the mtcars have? How about the number of columns? List down the
+names of the column. Show your answer.
+```{r 2}
+nrow(mtcars)
+ncol(mtcars)
+colnames(mtcars)
+library(tibble)
+head(mtcars)
+mtcars <- rownames_to_column(mtcars,var = "models")
+head(mtcars)
+```
+3. Generate a summary of the numerical variables as well as the structure of each variable in the mtcars
+dataset. Show your solution
+```{r 3}
+summary(mtcars)
+str(mtcars)
+```
+4. Create a bar chart to visualize the distribution of transmission types. Show your solution.
+```{r 4}
+
+```
+5. Which from the model has the highest mpg? How about the car model with the highest horsepower?
+Show your solution that will display the name of the model with the highest mpg and the car model
+with the highest horsepower
+
+```{r 5}
+max_mpg <- mtcars[which.max(mtcars$mpg), ]
+
+max_hp<- mtcars[which.max(mtcars$hp), ]
+
+cat("Car model with the highest mpg:", max_mpg$models, "\n")
+cat("Car model with the highest horsepower:", max_hp$models, "\n")
+```
+6. Which from the car models having 8 cylinders? Save this as newCar.csv file. Display the 1st two rows
+of this dataset. Show your solution.
+```{r 6}
+eightCyl <- mtcars[mtcars$cyl == 8, ]
+write.csv(eightCyl, file = "newCar.csv", row.names = FALSE)
+head(eightCyl, 2)
+```
+
+7. Calculate the mean mpg of the car models with 6 cylinders. Show your solution.
+```{r 7}
+meanMpg <- mean(mtcars$mpg[mtcars$cyl == 6])
+
+cat("Mean mpg for car models with 6 cylinders:", meanMpg, "\n")
+```
